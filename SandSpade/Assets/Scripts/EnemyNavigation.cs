@@ -7,6 +7,8 @@ public class EnemyNavigation : MonoBehaviour
     public float enemySpeed = 5f;
     private Rigidbody2D rb;
     
+    public GameObject target;
+    private Vector2 targetpos = target.transform.position;
     private bool flip = false;
 
     void Start()
@@ -23,13 +25,11 @@ public class EnemyNavigation : MonoBehaviour
     void FixedUpdate()
     {
         flip = false;
+        rb.velocity = Vector2.MoveTowards(transform.position, targetpos, 0.0f);
 
-        if(flip == false){
+        /*if(flip == false){
             rb.velocity = Vector2.right * enemySpeed;
-        }
-        if(flip == true){
-            rb.velocity = Vector2.right * -enemySpeed;
-        }
+        }*/
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -45,4 +45,5 @@ public class EnemyNavigation : MonoBehaviour
         flip = false;
         Debug.Log("Flip is " + flip);
     }
+
 }
