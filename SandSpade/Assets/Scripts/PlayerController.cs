@@ -32,15 +32,25 @@ public class PlayerController : MonoBehaviour
     {
         movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-         
-        if (Input.GetKeyDown(KeyCode.A)) 
-        {
-            FlipPlayer(-1); // Flip sprite to face left
-        }
-        if (Input.GetKeyDown(KeyCode.D)) // Player moves right
-        {
-            FlipPlayer(1); // Flip sprite to face right
-        }
+                    
+        if (movementDirection.x < 0) // Moving left
+         {
+           FlipPlayer(-1, 1); // Flip left, keep upright
+         }
+        else if (movementDirection.x > 0) // Moving right
+         {
+           FlipPlayer(1, 1); // Flip right, keep upright
+         }
+
+         if (movementDirection.y > 0) // Moving up
+         {
+           FlipPlayer(1, 1); // Keep facing right, flip vertically
+         }
+        else if (movementDirection.y < 0) // Moving down
+         {
+          FlipPlayer(1, -1); // Keep facing right, flip vertically
+         }
+
 
     
     }
@@ -113,11 +123,18 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Dig reset");
     }
 
-    void FlipPlayer(int direction)
-    {
-        Vector3 localScale = transform.localScale;
-        localScale.x = direction; // Set the X scale to 1 (right) or -1 (left)
-        transform.localScale = localScale;
-    }
+    void FlipPlayer(int directionX, int directionY)
+{
+    Vector3 localScale = transform.localScale;
+
+    // Flip along the X-axis (left or right)
+    localScale.x = directionX;
+
+    // Flip along the Y-axis (up or down)
+    localScale.y = directionY;
+
+    // Apply the new scale to the player
+    transform.localScale = localScale;
+}
 
 }
