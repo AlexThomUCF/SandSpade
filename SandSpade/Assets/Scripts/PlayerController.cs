@@ -39,23 +39,22 @@ public class PlayerController : MonoBehaviour
     {
         rb.velocity = movementDirection * speed;
 
-        hit = Physics2D.Raycast(transform.position, movementDirection, digDistance); // sends raycast from player position, pointing whereever the player is moving 
+        hit = Physics2D.Raycast(transform.position, movementDirection, digDistance); // sends raycast from player position, pointing wherever the player is moving 
 
         Debug.DrawRay(transform.position, movementDirection * digDistance, Color.red);
         
-        if(hit.collider != null)
+        if(hit.collider != null && hit.collider.gameObject.layer == layerMask) //Doesnt run bc  hit.collider.gameObject.layer == layerMask, If left out player object gets destroyed by Dig();
         {
+            Debug.Log("Hit doesn't = null");
             Dig();
         }
     }
 
     void Dig()
     {
-        if(hit.collider.gameObject.CompareTag("Ground"))
-        {
-            Debug.Log("IT HIT");
-            Destroy(hit.collider.gameObject);
-        }
+        Debug.Log("Is Destroying");
+        Destroy(hit.collider); // if you leave this and delete && statement above, deletes whole collider for tilemap. 
+        
     }
 
     void OnCollisionStay2D(Collision2D coll) // if player is on ground for more than 2 seconds, they can dig,
@@ -68,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
             if(digTimer >= waitTime)
             {
-                Debug.Log("Timer is at " + digTimer);
+                //Debug.Log("Timer is at " + digTimer);
                 canDig = true;
             }
         }
