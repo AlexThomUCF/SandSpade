@@ -30,20 +30,24 @@ public class PlayerController : MonoBehaviour
                     
         if (movementDirection.x < 0) // Moving left
          {
-           FlipPlayer(-1, 1); // Flip left, keep upright
+          // FlipPlayer(-1, 1); // Flip left, keep upright
+            RotatePlayer(-180,0);
          }
         else if (movementDirection.x > 0) // Moving right
          {
-           FlipPlayer(1, 1); // Flip right, keep upright
+           //FlipPlayer(1, 1); // Flip right, keep upright
+           RotatePlayer(0,0);
          }
 
          if (movementDirection.y > 0) // Moving up
          {
-           FlipPlayer(1, 1); // Keep facing right, flip vertically
+           //FlipPlayer(1, 0); // Keep facing right, flip vertically
+           RotatePlayer(0,90);
          }
         else if (movementDirection.y < 0) // Moving down
          {
-          FlipPlayer(1, -1); // Keep facing right, flip vertically
+          //FlipPlayer(1, -1); // Keep facing right, flip vertically
+          RotatePlayer(0,-90);
          }
 
 
@@ -94,31 +98,6 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-
-    /*void OnCollisionStay2D(Collision2D coll) // if player is on ground for more than 2 seconds, they can dig,
-    {
-        if(coll.gameObject.CompareTag("Ground"))
-        {
-            Debug.Log("Hit Ground");
-            
-            digTimer += Time.deltaTime;
-
-            if(digTimer >= waitTime)
-            { 
-                //Debug.Log("Timer is at " + digTimer);
-                canDig = true;
-            }
-        }
-
-    }
-
-    void OnCollisionExit2D(Collision2D coll)
-    {
-        digTimer = 0.0f;
-        canDig = false;
-        Debug.Log("Dig reset");
-    }*/
-
     void FlipPlayer(int directionX, int directionY)
 {
     Vector3 localScale = transform.localScale;
@@ -132,5 +111,18 @@ public class PlayerController : MonoBehaviour
     // Apply the new scale to the player
     transform.localScale = localScale;
 }
+
+void RotatePlayer(int directionY, int directionZ)
+{
+    Vector3 localRotation = transform.localEulerAngles;
+
+    localRotation.y = directionY;
+
+    localRotation.z = directionZ;
+
+    transform.localEulerAngles = localRotation;
+}
+
+//Try local rotation
 
 }
