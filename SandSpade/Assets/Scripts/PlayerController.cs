@@ -5,11 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
-    float speed = 10f;
+    public float speed = 10f;
     private Rigidbody2D rb; 
-    private float digTimer = 0.0f;
-    private float waitTime = 2.0f;
-    private bool canDig = false; 
 
     private Vector2 movementDirection;
     private float digDistance = .75f;
@@ -19,8 +16,6 @@ public class PlayerController : MonoBehaviour
     private Tilemap tilemap;
     private Vector3Int tilePosition;
     
-     
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -59,6 +54,7 @@ public class PlayerController : MonoBehaviour
     
     void FixedUpdate()
     {
+        
         rb.velocity = movementDirection * speed;
 
         movementDirection = movementDirection.normalized;
@@ -71,8 +67,8 @@ public class PlayerController : MonoBehaviour
         
             if(hit.collider != null)
              {
-                tilePosition = tilemap.WorldToCell(hit.point);
-
+                Vector3 adjustedHitPoint = (Vector3)hit.point + (Vector3)(movementDirection * 0.1f);
+                tilePosition = tilemap.WorldToCell(adjustedHitPoint);
                 Debug.Log("Hit doesn't = null");
                 Dig();
              }
@@ -87,7 +83,7 @@ public class PlayerController : MonoBehaviour
         {
             tilemap.SetTile(tilePosition, null);
             tilemap.RefreshAllTiles();
-            //Play dig animation here?
+            //Play dig animation here? or make seperate script and bool.
             Debug.Log("Tile removed at: " + tilePosition);
 
 
@@ -99,7 +95,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void OnCollisionStay2D(Collision2D coll) // if player is on ground for more than 2 seconds, they can dig,
+    /*void OnCollisionStay2D(Collision2D coll) // if player is on ground for more than 2 seconds, they can dig,
     {
         if(coll.gameObject.CompareTag("Ground"))
         {
@@ -108,7 +104,7 @@ public class PlayerController : MonoBehaviour
             digTimer += Time.deltaTime;
 
             if(digTimer >= waitTime)
-            {
+            { 
                 //Debug.Log("Timer is at " + digTimer);
                 canDig = true;
             }
@@ -121,7 +117,7 @@ public class PlayerController : MonoBehaviour
         digTimer = 0.0f;
         canDig = false;
         Debug.Log("Dig reset");
-    }
+    }*/
 
     void FlipPlayer(int directionX, int directionY)
 {
