@@ -6620,6 +6620,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knightro
       objectReference: {fileID: 0}
+    - target: {fileID: 7378693245417764529, guid: 882cd1ba9ae0f874f8394e92914ce112, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -16,17 +16,15 @@ public class PlayerAttack : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            LaunchAttack();
-        }
+    {   
+        if(player.transform.localEulerAngles.y != 0 || player.transform.localEulerAngles.y  != 180 || player.transform.localEulerAngles.z != 90 || player.transform.localEulerAngles.y != -90){
+             LaunchAttack();}
     }
 
     void LaunchAttack()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, pumpDistance,attackLayer);
-        Debug.DrawRay(transform.position, Vector2.right * pumpDistance, Color.green);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.movementDirection, pumpDistance,attackLayer);
+        Debug.DrawRay(transform.position, player.movementDirection * pumpDistance, Color.green);
     }
 }
 

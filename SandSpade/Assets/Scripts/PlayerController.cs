@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 10f;
     private Rigidbody2D rb; 
 
-    private Vector2 movementDirection;
+    public Vector2 movementDirection;
     private float digDistance = .75f;
 
     public LayerMask layerMask; 
@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = movementDirection * speed;
 
         movementDirection = movementDirection.normalized;
+        
 
         if (movementDirection != Vector2.zero) // if player is moving 
         {
