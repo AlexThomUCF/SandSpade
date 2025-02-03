@@ -16,13 +16,20 @@ public class PlayerController : MonoBehaviour
     private Tilemap tilemap;
     private Vector3Int tilePosition;
     public Animator knightroAnim;
-    public bool isAttack; 
-    
+    public bool isAttack;
+
+    public AudioSource movementMusic;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         tilemap = FindObjectOfType<Tilemap>();
         knightroAnim = GetComponent<Animator>();
+
+        if (movementMusic != null)
+        {
+            movementMusic.Stop();
+        }
     }
 
     // Update is called once per frame
@@ -53,12 +60,17 @@ public class PlayerController : MonoBehaviour
           RotatePlayer(0,-90);
          }
 
+        if (movementDirection != Vector2.zero && !movementMusic.isPlaying)
+        {
+            PlayMovementMusic();
+        }
+        else if (movementDirection == Vector2.zero && movementMusic.isPlaying)
+        {
+            PauseMovementMusic();
+        }
 
-    
     }
 
-    
-    
     void FixedUpdate()
     {
         
@@ -132,6 +144,21 @@ void RotatePlayer(int directionY, int directionZ)
     transform.localEulerAngles = localRotation;
 }
 
-//Try local rotation
+    //Try local rotation
 
+    void PlayMovementMusic()
+    {
+        if (movementMusic != null && !movementMusic.isPlaying)
+        {
+            movementMusic.Play();
+        }
+    }
+
+    void PauseMovementMusic()
+    {
+        if (movementMusic != null && movementMusic.isPlaying)
+        {
+            movementMusic.Pause();
+        }
+    }
 }
