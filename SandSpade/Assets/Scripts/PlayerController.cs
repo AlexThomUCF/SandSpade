@@ -15,11 +15,13 @@ public class PlayerController : MonoBehaviour
     private RaycastHit2D hit;
     private Tilemap tilemap;
     private Vector3Int tilePosition;
+    public Animator knightroAnim;
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         tilemap = FindObjectOfType<Tilemap>();
+        knightroAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
 
         if (movementDirection != Vector2.zero) // if player is moving 
         {
+            knightroAnim.SetBool("isWalking", true);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, movementDirection, digDistance, layerMask); // sends raycast from player position, pointing wherever the player is moving 
 
             Debug.DrawRay(transform.position, movementDirection * digDistance, Color.red);
@@ -77,6 +80,10 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Hit doesn't = null");
                 Dig();
              }
+        }
+        else if(movementDirection == Vector2.zero)
+        {
+            knightroAnim.SetBool("isWalking", false);
         }
 
     }
