@@ -19,7 +19,9 @@ public class PlayerAttack : MonoBehaviour
     {   
         if(Input.GetKey(KeyCode.Z))
         {
+            player.knightroAnim.SetBool("isAttacking", true);
             LaunchAttack();
+            player.knightroAnim.SetBool("isAttacking", true);
         }
     }
 

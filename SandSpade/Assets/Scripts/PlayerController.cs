@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private Tilemap tilemap;
     private Vector3Int tilePosition;
     public Animator knightroAnim;
+    public bool isAttack; 
     
     void Start()
     {
