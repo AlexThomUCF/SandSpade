@@ -17,8 +17,12 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if(player.transform.localEulerAngles.y != 0 || player.transform.localEulerAngles.y  != 180 || player.transform.localEulerAngles.z != 90 || player.transform.localEulerAngles.y != -90){
-             LaunchAttack();}
+        if(Input.GetKey(KeyCode.Z))
+        {
+            player.knightroAnim.SetBool("isAttacking", true);
+            LaunchAttack();
+            player.knightroAnim.SetBool("isAttacking", true);
+        }
     }
 
     void LaunchAttack()

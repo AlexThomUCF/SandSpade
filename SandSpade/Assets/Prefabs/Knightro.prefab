@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3173967551918953260}
   - component: {fileID: -2156200557959816468}
   - component: {fileID: 7057001409438292471}
+  - component: {fileID: 533612616060794235}
   m_Layer: 0
   m_Name: Knightro
   m_TagString: Untagged
@@ -76,9 +77,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 251918693
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 59ba63c260dde9c4a88cdfd096f9d367, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -103,9 +104,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movementDirection: {x: 0, y: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  knightroAnim: {fileID: 0}
+  isAttack: 0
 --- !u!114 &32014350893182398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +202,27 @@ MonoBehaviour:
   attackLayer:
     serializedVersion: 2
     m_Bits: 0
+--- !u!95 &533612616060794235
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3606142145455627464}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fe184af5459b3de469b91e184a03119b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4509983592792682930
 GameObject:
   m_ObjectHideFlags: 0
