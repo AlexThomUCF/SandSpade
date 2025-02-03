@@ -44,3 +44,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3296492397
+    locked: 0
+  - name: Sand
+    uniqueID: 231404727
+    locked: 0
+  - name: Border
+    uniqueID: 634389951
+    locked: 0
+  - name: Characters
+    uniqueID: 251918693
+    locked: 0
