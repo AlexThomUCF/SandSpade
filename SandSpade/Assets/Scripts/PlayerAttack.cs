@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {   
     public PlayerController player;
-    public float pumpDistance = 3.0f;
+    public float pumpDistance = 1.0f;
     public LayerMask attackLayer;
+    public Animator weaponAnim;
     
     // Start is called before the first frame update
     void Start()
@@ -17,11 +18,13 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        Debug.DrawRay(transform.position, player.movementDirection * pumpDistance, Color.green);    
         if(Input.GetKey(KeyCode.Z))
         {
             player.knightroAnim.SetBool("isAttacking", true);
+            weaponAnim.SetBool("shootPump", true);
             LaunchAttack();
-            player.knightroAnim.SetBool("isAttacking", true);
+            Debug.Log("Threw attack");
         }
     }
 

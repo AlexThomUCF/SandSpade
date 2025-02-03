@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject playerPrefab;
     public Transform spawnPoint;
-    public TextMeshPro playerHealth;
 
     void Start()
     {
@@ -26,10 +25,5 @@ public class GameManager : MonoBehaviour
     void SpawnPlayer()
     {
         Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation); // Spawns the player on the spawn point
-    }
-
-    void UpdatePlayerHealth()
-    {
-
     }
 }
