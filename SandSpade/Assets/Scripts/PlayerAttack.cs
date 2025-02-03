@@ -21,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
         {
             player.knightroAnim.SetBool("isAttacking", true);
             LaunchAttack();
-            player.knightroAnim.SetBool("isAttacking", true);
+            Debug.Log("Threw attack");
         }
     }
 
