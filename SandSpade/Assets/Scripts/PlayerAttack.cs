@@ -66,7 +66,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy")) 
         {
-            weaponAnim.speed = 0f;
+            //weaponAnim.speed = 0f;
             Debug.Log("Paused");
         }
         
