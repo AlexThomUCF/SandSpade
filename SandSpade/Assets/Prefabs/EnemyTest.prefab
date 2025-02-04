@@ -257,6 +257,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
-  detectionDistance: 0.1
+  detectionDistance: 0.5
   verticalMoveDelay: 0.15
   verticalCooldownTime: 5
