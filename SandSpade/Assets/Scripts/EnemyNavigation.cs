@@ -16,10 +16,14 @@ public class EnemyNavigation : MonoBehaviour
     private float lastVerticalMoveTime = 0f;
 
     private Vector2 verticalDirection; // Tracks current vertical direction
+    public Animator duckAnim;
+
+    
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        duckAnim = GetComponent<Animator>();
         rb.gravityScale = 0;
     }
 
@@ -148,6 +152,12 @@ public class EnemyNavigation : MonoBehaviour
         {
             movingRight = !movingRight;
             FlipSprite();
+        }
+
+        if(collision.gameObject.CompareTag("Weapon"))
+        {
+            duckAnim.SetTrigger("Death");
+            Debug.Log("You dead");
         }
     }
 

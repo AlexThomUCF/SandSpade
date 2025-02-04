@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Is Destroying");
         if(tilemap.HasTile(tilePosition))
         {
+            knightroAnim.SetBool("isDigging", true);
             tilemap.SetTile(tilePosition, null);
             tilemap.RefreshAllTiles();
             //Play dig animation here? or make seperate script and bool.
@@ -117,6 +118,9 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("No tile found at: " + tilePosition);
         }
+        
+        StartCoroutine(StopDigging());
+
         
     }
     void FlipPlayer(int directionX, int directionY)
@@ -160,5 +164,10 @@ void RotatePlayer(int directionY, int directionZ)
         {
             movementMusic.Pause();
         }
+    }
+    IEnumerator StopDigging()
+    {
+        yield return new WaitForSeconds(1);
+        knightroAnim.SetBool("isDigging" , false);
     }
 }

@@ -12,9 +12,10 @@ public class PlayerHealth : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")) // Check if colliding with an enemy
+        if (collision.gameObject.CompareTag("Enemy") && !collision.gameObject.CompareTag("Weapon")) // Check if colliding with an enemy
         {
             LoseLife();
+            
         }
         else if (collision.gameObject.CompareTag("Buried Item")) // Check if colliding with a Buried item
         {
@@ -35,8 +36,6 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator Death()
     {
-        player.knightroAnim.SetBool("isWalking", false);
-        player.knightroAnim.SetBool("isDigging", false);
         player.knightroAnim.SetBool("isDead", true);
         yield return new WaitForSeconds(1.5f);
 
