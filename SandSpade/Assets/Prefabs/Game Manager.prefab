@@ -46,4 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 3606142145455627464, guid: 882cd1ba9ae0f874f8394e92914ce112, type: 3}
   spawnPoint: {fileID: 0}
-  playerHealth: {fileID: 0}
+  enemyTag: Enemy
+  nextLevelName: Level_Two
+  winSceneName: win

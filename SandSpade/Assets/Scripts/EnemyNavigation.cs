@@ -7,7 +7,7 @@ public class EnemyNavigation : MonoBehaviour
     public float enemySpeed = 2f;
     private Rigidbody2D rb;
     private bool movingRight = true;
-    private bool movingVertically = false; // Tracks if enemy is moving vertically
+    private bool movingVertically = false;
     private bool canMoveVertically = true; // Cooldown control
 
     public float detectionDistance = 2f;
@@ -52,43 +52,39 @@ public class EnemyNavigation : MonoBehaviour
         }
     }
 
-    bool CheckForTag(Vector2 direction)
+    bool CheckForTag(Vector2 direction) // Finds the corners of the enemy game object and projects rays from them so the game object doesnt get stuck
     {
-        // Get the box collider
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
-        if (boxCollider == null) return false; // Fail-safe check
+        if (boxCollider == null) return false;
 
-        // Get the bounds of the collider
-        Vector2 boundsMin = boxCollider.bounds.min; // Bottom-left corner
-        Vector2 boundsMax = boxCollider.bounds.max; // Top-right corner
+        Vector2 boundsMin = boxCollider.bounds.min;
+        Vector2 boundsMax = boxCollider.bounds.max;
 
-        // Determine the two corner positions based on movement direction
         Vector2 corner1, corner2;
-        if (direction == Vector2.up) // Moving up, check top corners
+        if (direction == Vector2.up)
         {
-            corner1 = new Vector2(boundsMin.x, boundsMax.y); // Top-left
-            corner2 = new Vector2(boundsMax.x, boundsMax.y); // Top-right
+            corner1 = new Vector2(boundsMin.x, boundsMax.y);
+            corner2 = new Vector2(boundsMax.x, boundsMax.y);
         }
-        else if (direction == Vector2.down) // Moving down, check bottom corners
+        else if (direction == Vector2.down)
         {
-            corner1 = new Vector2(boundsMin.x, boundsMin.y); // Bottom-left
-            corner2 = new Vector2(boundsMax.x, boundsMin.y); // Bottom-right
+            corner1 = new Vector2(boundsMin.x, boundsMin.y);
+            corner2 = new Vector2(boundsMax.x, boundsMin.y);
         }
-        else // Horizontal check (not needed in your case, but keeping it structured)
+        else
         {
             corner1 = transform.position;
             corner2 = transform.position;
         }
 
-        // Cast two rays
+        // Cast the rays
         RaycastHit2D hit1 = Physics2D.Raycast(corner1, direction, detectionDistance);
         RaycastHit2D hit2 = Physics2D.Raycast(corner2, direction, detectionDistance);
 
-        // Debugging
         Debug.DrawRay(corner1, direction * detectionDistance, Color.red);
         Debug.DrawRay(corner2, direction * detectionDistance, Color.blue);
 
-        // Check if either ray hits something tagged "sand"
+        // Check if either ray hits anything tagged "sand"
         if ((hit1.collider != null && hit1.collider.CompareTag("Sand")) ||
             (hit2.collider != null && hit2.collider.CompareTag("Sand")))
         {
