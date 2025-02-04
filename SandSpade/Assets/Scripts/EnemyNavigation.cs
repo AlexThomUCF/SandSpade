@@ -149,11 +149,9 @@ public class EnemyNavigation : MonoBehaviour
             movingRight = !movingRight;
             FlipSprite();
         }
-
-        if(collision.gameObject.CompareTag("Weapon"))
+        else if(collision.gameObject.CompareTag("Weapon"))
         {
-            duckAnim.SetTrigger("Death");
-            Debug.Log("You dead");
+            duckAnim.SetBool("enemyIsDead", true);
         }
     }
 

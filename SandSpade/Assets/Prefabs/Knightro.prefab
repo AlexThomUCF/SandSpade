@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8583eb3f8caedd47aa98ddc96e1aae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duck: {fileID: 0}
   lives: 3
 --- !u!50 &3173967551918953260
 Rigidbody2D:
@@ -472,8 +473,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5133180566019491688}
   - component: {fileID: 6490010704675333074}
+  - component: {fileID: 1613902600546377008}
   m_Layer: 0
-  m_Name: Collidder
+  m_Name: Collider
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,3 +541,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.46764368, y: 0.5894921}
   m_EdgeRadius: 0
+--- !u!114 &1613902600546377008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8680860024323779159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1a43b306d134074abd24675c0a88975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
