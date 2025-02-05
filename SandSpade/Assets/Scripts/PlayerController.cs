@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
+    public PlayerAttack playerAttack;
+     
     public float speed = 10f;
     private Rigidbody2D rb; 
 
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         tilemap = FindObjectOfType<Tilemap>();
         knightroAnim = GetComponent<Animator>();
+        playerAttack = GetComponent<PlayerAttack>();
 
         if (movementMusic != null)
         {
@@ -75,6 +78,10 @@ public class PlayerController : MonoBehaviour
         else if (movementDirection == Vector2.zero && movementMusic.isPlaying)
         {
             PauseMovementMusic();
+        }
+        else if(movementDirection == Vector2.zero && playerAttack.soundCanPlay == true)
+        {
+            playerAttack.PlayAudio();
         }
 
     }

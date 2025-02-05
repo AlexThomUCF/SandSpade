@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
     private float timer = 0f;
     public AudioSource audioSource;
     public AudioClip attackSound;
+    public bool soundCanPlay = false;
     
     
 
@@ -32,7 +33,8 @@ public class PlayerAttack : MonoBehaviour
 
         if(Input.GetKey(KeyCode.Z) && timer >= waitTime) // If player attacks 
         {
-            audioSource.PlayOneShot(attackSound);
+            soundCanPlay = true;
+            PlayAudio();
             player.knightroAnim.SetBool("isAttacking", true);
             weaponAnim.SetBool("shootPump", true);
             StartCoroutine(LaunchAttack());
@@ -40,6 +42,7 @@ public class PlayerAttack : MonoBehaviour
             StartCoroutine(StopAttack());
             timer = 0f;
         }
+        soundCanPlay = false;
     }
 
     IEnumerator LaunchAttack()
@@ -64,10 +67,12 @@ public class PlayerAttack : MonoBehaviour
                     Debug.Log("Playing animation");
                     enemy.enemySpeed = 0f;
                     enemyAnimator.SetBool("duckHit", true);
-                    StartCoroutine(PauseAttack());
                     player.knightroAnim.SetBool("attackSuccess", true);
+                    StartCoroutine(PauseAttack());
+                    
                 }
-                
+                StartCoroutine(enemy.EnemyPop());
+                player.knightroAnim.SetBool("attackSuccess", false);
                 Destroy(hit.collider.gameObject, 2.0f); // Destroy enemy after 2 sec
             }   
         }
@@ -90,6 +95,11 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log("Paused");
         yield return new WaitForSeconds(1.90f);
         player.knightroAnim.speed = 1.0f;
+    }
+
+    public void PlayAudio()
+    {
+        audioSource.PlayOneShot(attackSound);
     }
 
 

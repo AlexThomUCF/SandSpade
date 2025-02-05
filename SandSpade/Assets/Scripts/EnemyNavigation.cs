@@ -159,8 +159,9 @@ public class EnemyNavigation : MonoBehaviour
         transform.localScale = localScale;
     }
 
-    public void EnemyPop()
+    public IEnumerator EnemyPop()
     {
+        yield return new WaitForSeconds(1.0f);
         audioSource.PlayOneShot(popSound);
     }
 }
