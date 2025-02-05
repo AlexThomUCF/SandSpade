@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edb86f40cd16cd4da30288f136ec63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  speed: 2
   movementDirection: {x: 0, y: 0}
   layerMask:
     serializedVersion: 2
@@ -312,7 +312,6 @@ MonoBehaviour:
     m_Bits: 512
   weaponAnim: {fileID: 8926743367611625437}
   waitTime: 2
-  duck: {fileID: 2850640156766992325, guid: b42fe63ac8bd1094e8529b300c7d5693, type: 3}
 --- !u!95 &533612616060794235
 Animator:
   serializedVersion: 5
