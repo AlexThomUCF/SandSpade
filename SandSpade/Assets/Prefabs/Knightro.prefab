@@ -117,12 +117,12 @@ GameObject:
   - component: {fileID: 1932901861505513125}
   - component: {fileID: 7378693245417764529}
   - component: {fileID: 5637882217324968606}
-  - component: {fileID: 32014350893182398}
   - component: {fileID: 3173967551918953260}
   - component: {fileID: -2156200557959816468}
   - component: {fileID: 7057001409438292471}
   - component: {fileID: 533612616060794235}
   - component: {fileID: -5359907909339791381}
+  - component: {fileID: 4966360443461936382}
   m_Layer: 0
   m_Name: Knightro
   m_TagString: Player
@@ -218,19 +218,6 @@ MonoBehaviour:
   knightroAnim: {fileID: 8926743367611625437}
   isAttack: 0
   movementMusic: {fileID: -5359907909339791381}
---- !u!114 &32014350893182398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3606142145455627464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8583eb3f8caedd47aa98ddc96e1aae0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lives: 3
 --- !u!50 &3173967551918953260
 Rigidbody2D:
   serializedVersion: 4
@@ -429,6 +416,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4966360443461936382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3606142145455627464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8583eb3f8caedd47aa98ddc96e1aae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 3
+  lifeIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &4509983592792682930
 GameObject:
   m_ObjectHideFlags: 0
