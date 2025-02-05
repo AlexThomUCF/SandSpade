@@ -9,6 +9,7 @@ public class BuriedItem : MonoBehaviour
     private bool isFalling = false;
     public LayerMask sandLayer;
     public float raycastDistance = 1.5f;
+    public float fallDelay = 0.5f; // Delay before falling
 
     void Start()
     {
@@ -20,7 +21,7 @@ public class BuriedItem : MonoBehaviour
     {
         if (!isFalling && !IsGroundBelow()) // Only fall if no ground is below
         {
-            StartFalling();
+            StartCoroutine(DelayedFall());
         }
     }
 
@@ -39,25 +40,38 @@ public class BuriedItem : MonoBehaviour
         else
         {
             Debug.DrawRay(rayStart, Vector2.down * raycastDistance, Color.red); // Ray for me to see
-            Debug.Log("No ground below. Rock will fall.");
+            Debug.Log("No ground below. Rock will fall soon.");
             return false; // No ground detected
         }
+    }
+
+    IEnumerator DelayedFall()
+    {
+        isFalling = true; // Prevent multiple coroutines from running
+        yield return new WaitForSeconds(fallDelay); // Wait before falling
+        StartFalling();
     }
 
     void StartFalling()
     {
         Debug.Log("Rock starting to fall!");
-        isFalling = true;
         rb.bodyType = RigidbodyType2D.Dynamic; // Enable physics for falling
         rb.velocity = Vector2.down * fallSpeed;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (((1 << collision.gameObject.layer) & sandLayer) != 0) // Check if it hit the Sand layer
+        // If it hits the sand, destroy itself
+        if (((1 << collision.gameObject.layer) & sandLayer) != 0) 
         {
             Debug.Log("Rock hit the sand. Destroying rock.");
             Destroy(gameObject);
+        }
+        // If it hits an enemy, destroy the enemy
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Rock crushed an enemy: " + collision.gameObject.name);
+            Destroy(collision.gameObject); // Destroy the enemy
         }
     }
 }

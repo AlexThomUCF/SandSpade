@@ -431,8 +431,6 @@ MonoBehaviour:
   lives: 3
   lifeIcons:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &4509983592792682930
 GameObject:
   m_ObjectHideFlags: 0

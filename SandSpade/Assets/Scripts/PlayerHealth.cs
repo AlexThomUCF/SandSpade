@@ -1,14 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using System.Collections.Generic;
 
 public class PlayerHealth : MonoBehaviour
 {
     PlayerController player;
     public int lives = 3; // Player starts with 3 lives
-    public List<RawImage> lifeIcons; // Use RawImage instead of Image
 
     void Start()
     {
@@ -28,11 +25,13 @@ public class PlayerHealth : MonoBehaviour
         lives--; // Reduce lives by 1
         Debug.Log("Player hit! Lives remaining: " + lives);
 
-        if (lifeIcons.Count > 0) 
-        {
-            lifeIcons[lifeIcons.Count - 1].gameObject.SetActive(false); // Hide the last life icon
-            lifeIcons.RemoveAt(lifeIcons.Count - 1); // Remove reference
-        }
+        // Hide life icons based on remaining lives
+        if (lives == 2)
+            GameObject.FindWithTag("life3").SetActive(false);
+        else if (lives == 1)
+            GameObject.FindWithTag("life2").SetActive(false);
+        else if (lives == 0)
+            GameObject.FindWithTag("life1").SetActive(false);
 
         if (lives <= 0)
         {

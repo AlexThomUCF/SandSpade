@@ -175,4 +175,5 @@ MonoBehaviour:
   sandLayer:
     serializedVersion: 2
     m_Bits: 64
-  raycastDistance: 1.5
+  raycastDistance: 1
+  fallDelay: 0.5

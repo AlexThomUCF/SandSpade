@@ -9,6 +9,9 @@ TagManager:
   - Enemy
   - Sand
   - Weapon
+  - life1
+  - life2
+  - life3
   layers:
   - Default
   - TransparentFX
