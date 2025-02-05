@@ -35,7 +35,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+
+        if(moveX != 0)
+        {
+            moveY = 0;
+        }
+        
+        movementDirection = new Vector2(moveX,moveY);
 
                     
         if (movementDirection.x < 0) // Moving left
@@ -106,8 +114,8 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Is Destroying");
         if(tilemap.HasTile(tilePosition))
         {
-            knightroAnim.SetBool("isDigging", true);
-            tilemap.SetTile(tilePosition, null);
+            knightroAnim.SetBool("isDigging", true); // needs some improvement 
+            tilemap.SetTile(tilePosition, null); 
             tilemap.RefreshAllTiles();
             //Play dig animation here? or make seperate script and bool.
             Debug.Log("Tile removed at: " + tilePosition);
@@ -119,7 +127,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("No tile found at: " + tilePosition);
         }
         
-        StartCoroutine(StopDigging());
+        StartCoroutine(StopDigging()); // needs some fixing 
 
         
     }

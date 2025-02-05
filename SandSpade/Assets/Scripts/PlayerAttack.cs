@@ -58,13 +58,14 @@ public class PlayerAttack : MonoBehaviour
 
             if (enemy != null) // Make sure the enemy script exists
             {
-                Animator enemyAnimator = hit.collider.GetComponent<Animator>();
+                Animator enemyAnimator = hit.collider.GetComponent<Animator>(); //hit gets enemy animator
                 if (enemyAnimator != null)
                 {
                     Debug.Log("Playing animation");
                     enemy.enemySpeed = 0f;
                     enemyAnimator.SetBool("duckHit", true);
                     StartCoroutine(PauseAttack());
+                    player.knightroAnim.SetBool("attackSuccess", true);
                 }
                 
                 Destroy(hit.collider.gameObject, 2.0f); // Destroy enemy after 2 sec
@@ -86,7 +87,6 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator PauseAttack()
     {
-        player.knightroAnim.SetBool("attackSuccess", true);
         Debug.Log("Paused");
         yield return new WaitForSeconds(1.90f);
         player.knightroAnim.speed = 1.0f;
