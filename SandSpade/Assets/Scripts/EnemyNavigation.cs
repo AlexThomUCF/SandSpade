@@ -14,6 +14,8 @@ public class EnemyNavigation : MonoBehaviour
     public float verticalMoveDelay = 0.3f;
     public float verticalCooldownTime = 5f;
     private float lastVerticalMoveTime = 0f;
+    public AudioSource audioSource;
+    public AudioClip popSound;
 
     private Vector2 verticalDirection; // Tracks current vertical direction
 
@@ -155,5 +157,10 @@ public class EnemyNavigation : MonoBehaviour
         Vector3 localScale = transform.localScale;
         localScale.x *= -1;
         transform.localScale = localScale;
+    }
+
+    public void EnemyPop()
+    {
+        audioSource.PlayOneShot(popSound);
     }
 }

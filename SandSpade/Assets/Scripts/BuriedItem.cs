@@ -70,8 +70,10 @@ public class BuriedItem : MonoBehaviour
         // If it hits an enemy, destroy the enemy
         else if (collision.gameObject.CompareTag("Enemy"))
         {
+            Animator enemyAnimation = collision.gameObject.GetComponent<Animator>();
+            enemyAnimation.SetBool("isSquished", true);
             Debug.Log("Rock crushed an enemy: " + collision.gameObject.name);
-            Destroy(collision.gameObject); // Destroy the enemy
+            Destroy(collision.gameObject, 0.5f); // Destroy the enemy
         }
     }
 }
