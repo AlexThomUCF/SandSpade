@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     public float waitTime = 1f;
     private float timer = 0f;
     public AudioSource audioSource;
+    public AudioSource audioSource2;
     public AudioClip attackSound;
     public bool soundCanPlay = false;
     
@@ -99,7 +100,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void PlayAudio()
     {
-        audioSource.PlayOneShot(attackSound);
+        audioSource2.PlayOneShot(attackSound);
     }
 
 
