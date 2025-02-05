@@ -53,7 +53,6 @@ public class PlayerAttack : MonoBehaviour
                 if(enemyAnimator != null)
                 {
                     Debug.Log("Playing animation");
-                    player.knightroAnim.SetBool("attackSuccess", true);
                     enemy.enemySpeed = 0f;
                     enemyAnimator.SetBool("duckHit", true);
                     StartCoroutine(PauseAttack());
@@ -73,7 +72,7 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator PauseAttack()
     {
-        player.knightroAnim.speed = 0f;
+        player.knightroAnim.SetBool("attackSuccess", true);
         Debug.Log("Paused");
         yield return new WaitForSeconds(1.90f);
         player.knightroAnim.speed = 1.0f;
