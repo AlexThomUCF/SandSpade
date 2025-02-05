@@ -6,22 +6,15 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     PlayerController player;
-    public DuckScript duck;
  
     public int lives = 3; // Player starts with 3 lives
     void Start()
     {
         player = GetComponent<PlayerController>();
-        duck = GetComponent<DuckScript>();
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Weapon"))
-        {
-            Debug.Log("Lord help me");
-            return;
-        }
-        else if (collision.gameObject.CompareTag("Enemy")) // Check if colliding with an enemy
+        if (collision.gameObject.CompareTag("Enemy")) // Check if colliding with an enemy
         {
             LoseLife();
         }

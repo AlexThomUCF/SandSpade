@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -1689014295122129352}
   - component: {fileID: -729911623308148749}
   - component: {fileID: -4134996739941715999}
+  - component: {fileID: 7258533311776314124}
   m_Layer: 9
   m_Name: EnemyDuck
   m_TagString: Enemy
@@ -98,7 +99,7 @@ Animator:
   m_GameObject: {fileID: 2850640156766992325}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2b6f533b4086ecb40b5118cc792d68b7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 42deab6218f8d2943bdec40c64fa2b7f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -197,4 +198,16 @@ MonoBehaviour:
   detectionDistance: 0.1
   verticalMoveDelay: 0.15
   verticalCooldownTime: 5
-  duckAnim: {fileID: 0}
+--- !u!114 &7258533311776314124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850640156766992325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b69914c855e7eb4d890a33664b0be7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duckAnimator: {fileID: 3441440091241186202}

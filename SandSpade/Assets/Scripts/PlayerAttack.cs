@@ -10,8 +10,9 @@ public class PlayerAttack : MonoBehaviour
     public Animator weaponAnim;
     public RaycastHit2D hit;
     private EnemyNavigation enemy;
-    public float waitTime = 2f;
+    public float waitTime = 1f;
     private float timer = 0f;
+    
 
     
     // Start is called before the first frame update
@@ -39,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
     void LaunchAttack()
     {
         hit = Physics2D.Raycast(transform.position, player.transform.right, pumpDistance,attackLayer);
-        Debug.DrawRay(transform.position, player.transform.right * pumpDistance, Color.cyan);
+        Debug.DrawRay(transform.position, player.transform.right * pumpDistance, Color.green);
         
         
         if (hit.collider != null && hit.collider.CompareTag("Enemy")) // Check if the object hit has the "Enemy" tag
@@ -48,9 +49,17 @@ public class PlayerAttack : MonoBehaviour
 
             if (enemy != null) // Make sure the enemy script exists
             {
-                Debug.Log("Time to die");
-                enemy.duckAnim.SetTrigger("Death"); // Trigger the death animation
-                Destroy(hit.collider.gameObject, 1.0f); // Destroy enemy after 1 second
+                Animator enemyAnimator = hit.collider.GetComponent<Animator>();
+                if(enemyAnimator != null)
+                {
+                    Debug.Log("Playing animation");
+                    player.knightroAnim.SetBool("attackSuccess", true);
+                    enemy.enemySpeed = 0f;
+                    enemyAnimator.SetBool("duckHit", true);
+                    StartCoroutine(PauseAttack());
+
+                }
+                Destroy(hit.collider.gameObject, 2.0f); // Destroy enemy after 1 second
             }
         }
     }
@@ -62,15 +71,15 @@ public class PlayerAttack : MonoBehaviour
         weaponAnim.SetBool("shootPump", false);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    IEnumerator PauseAttack()
     {
-        if (collision.gameObject.CompareTag("Enemy")) 
-        {
-            weaponAnim.speed = 0f;
-            Debug.Log("Paused");
-        }
-        
+        player.knightroAnim.speed = 0f;
+        Debug.Log("Paused");
+        yield return new WaitForSeconds(1.90f);
+        player.knightroAnim.speed = 1.0f;
     }
+
+
 
 }
 

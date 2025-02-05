@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: KnightroAttack
+  m_Name: Duck_Die
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,7 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 51086a6e9cc26c744a1ebc5dc74d5e3a, type: 3}
+      value: {fileID: 21300000, guid: c9de8a00ee0589342ad635ffac886877, type: 3}
+    - time: 0.16666667
+      value: {fileID: 21300000, guid: 711d0151575b8d048bf4b9cae5b87125, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,13 +46,14 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 51086a6e9cc26c744a1ebc5dc74d5e3a, type: 3}
+    - {fileID: 21300000, guid: c9de8a00ee0589342ad635ffac886877, type: 3}
+    - {fileID: 21300000, guid: 711d0151575b8d048bf4b9cae5b87125, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.016666668
+    m_StopTime: 0.18333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
